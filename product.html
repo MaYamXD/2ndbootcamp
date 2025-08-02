@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #000000;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 32px;
+            display: flex;
+            gap: 32px;
+        }
+        .product-image {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .product-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.10);
+        }
+        .product-details {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .product-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .product-description {
+            color: #555;
+            margin-bottom: 16px;
+        }
+        .product-price {
+            font-size: 1.5rem;
+            color: #2e8b57;
+            margin-bottom: 16px;
+        }
+        .quantity-label {
+            margin-bottom: 4px;
+        }
+        .quantity-input {
+            width: 60px;
+            padding: 6px;
+            font-size: 1rem;
+            margin-right: 12px;
+        }
+        .add-to-cart-btn {
+            background: #2e8b57;
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .add-to-cart-btn:hover {
+            background: #256d46;
+        }
+        .cart-message {
+            margin-top: 16px;
+            color: #2e8b57;
+            font-weight: bold;
+            display: none;
+        }
+        @media (max-width: 700px) {
+            .container {
+                flex-direction: column;
+                padding: 16px;
+            }
+            .product-image, .product-details {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1513708927688-890fe41c3c34?auto=format&fit=crop&w=400&q=80" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <div class="product-title">Wireless Headphones</div>
+            <div class="product-description">
+                Experience high-quality sound with our latest wireless headphones. Enjoy up to 20 hours of battery life, comfortable ear cushions, and seamless Bluetooth connectivity.
+            </div>
+            <div class="product-price" id="productPrice">$59.99</div>
+            <label class="quantity-label" for="quantity">Quantity:</label>
+            <input type="number" id="quantity" class="quantity-input" value="1" min="1" max="10">
+            <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+            <div class="cart-message" id="cartMessage"></div>
+        </div>
+    </div>
+    <script>
+        function addToCart() {
+            const qty = document.getElementById('quantity').value;
+            const message = document.getElementById('cartMessage');
+            message.textContent = `Added ${qty} item(s) to your cart!`;
+            message.style.display = 'block';
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
